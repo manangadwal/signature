@@ -14,58 +14,24 @@ class login_screen extends StatelessWidget {
             children: [
               Image.asset("assets/sig.png"),
               Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          height: 50,
-                          width: 190,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70),
-                              color: Colors.grey[300]),
-                          child: Center(
-                              child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Image.asset(
-                                  "assets/google.png",
-                                  height: 25,
-                                  width: 25,
-                                  fit: BoxFit.contain,
-                                ),
-                                Text(
-                                  "Sign in with Google",
-                                  style: TextStyle(
-                                      color: Colors.blue[700],
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14.6),
-                                )
-                              ],
-                            ),
-                          )),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => home()));
+                        },
+                        child: Text(
+                          "Get Started",
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => home()),
-                            );
-                          },
-                          child: Text(
-                            "Skip for now",
-                            style: TextStyle(color: Colors.black54),
-                          )),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               )
             ],
