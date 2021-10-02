@@ -36,7 +36,8 @@ class _generatorState extends State<generator> {
             height: 20,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 30, right: 30),
+            padding:
+                const EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 10),
             child: TextField(
               decoration: InputDecoration(
                   suffixIcon: IconButton(
