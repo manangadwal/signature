@@ -12,6 +12,7 @@ class generator extends StatefulWidget {
 }
 
 class _generatorState extends State<generator> {
+  bool _hasBeenPressed = false;
   final controller = TextEditingController();
 
   @override

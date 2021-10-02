@@ -35,7 +35,9 @@ class login_screen extends StatelessWidget {
                           },
                           child: Text(
                             "Get Started",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.cyan),
                           ),
                         )
                       ],
