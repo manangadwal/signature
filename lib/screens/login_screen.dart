@@ -10,31 +10,40 @@ class login_screen extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Container(
-          child: Stack(
-            children: [
-              Image.asset("assets/sig.png"),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => home()));
-                        },
-                        child: Text(
-                          "Get Started",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      )
-                    ],
+          child: Center(
+            child: Stack(
+              children: [
+                Center(
+                  child: Image.asset(
+                    "assets/sig.png",
+                    fit: BoxFit.fill,
                   ),
                 ),
-              )
-            ],
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => home()));
+                          },
+                          child: Text(
+                            "Get Started",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ));
   }
