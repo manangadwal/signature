@@ -30,8 +30,8 @@ class login_screen extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => home()));
+                                PageRouteBuilder(
+                                    pageBuilder: (context, a1, a2) => home()));
                           },
                           child: Text(
                             "Get Started",
