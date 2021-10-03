@@ -3,16 +3,16 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
-class generator extends StatefulWidget {
-  const generator({Key? key}) : super(key: key);
+class Generator extends StatefulWidget {
+  const Generator({Key? key}) : super(key: key);
 
   @override
-  State<generator> createState() => _generatorState();
+  State<Generator> createState() => _GeneratorState();
 }
 
-class _generatorState extends State<generator> {
-  bool _hasBeenPressed = false;
+class _GeneratorState extends State<Generator> {
   final controller = TextEditingController();
 
   @override
@@ -21,6 +21,13 @@ class _generatorState extends State<generator> {
     super.dispose();
   }
 
+  Map filters = {
+    "upper": true,
+    "lower": true,
+    "numbers": true,
+    "symbols": true,
+  };
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,16 +35,66 @@ class _generatorState extends State<generator> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            " Random Password Generator ",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
           SizedBox(
             height: 20,
           ),
+          Text(
+            "Random Password Generator ",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          Spacer(),
+          GridView(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, childAspectRatio: 2),
+            children: [
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Checkbox(
+                    value: filters["upper"],
+                    onChanged: (value) {
+                      setState(() {
+                        filters["upper"] = value;
+                      });
+                    }),
+                Text("Upper Case"),
+              ]),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Checkbox(
+                    value: filters["lower"],
+                    onChanged: (value) {
+                      setState(() {
+                        filters["lower"] = value;
+                      });
+                    }),
+                Text("Lower Case"),
+              ]),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Checkbox(
+                    value: filters["numbers"],
+                    onChanged: (value) {
+                      setState(() {
+                        filters["numbers"] = value;
+                      });
+                    }),
+                Text("Numbers"),
+              ]),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Checkbox(
+                    value: filters["symbols"],
+                    onChanged: (value) {
+                      setState(() {
+                        filters["symbols"] = value;
+                      });
+                    }),
+                Text("Symbols"),
+              ]),
+            ],
+          ),
+          Spacer(),
           Padding(
             padding:
-                const EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 10),
+                const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
             child: TextField(
               decoration: InputDecoration(
                   suffixIcon: IconButton(
@@ -57,47 +114,75 @@ class _generatorState extends State<generator> {
                     },
                   ),
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(65)))),
+                      borderRadius: BorderRadius.all(Radius.circular(5)))),
               readOnly: true,
               enableInteractiveSelection: false,
               controller: controller,
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
-          ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateColor.resolveWith((states) =>
-                      states.contains(MaterialState.pressed)
-                          ? Colors.red
-                          : Colors.black)),
-              onPressed: () {
-                final password = generatepass();
-                controller.text = password;
-              },
-              child: Text('Generate'))
+          Spacer(),
+          Container(
+            margin: EdgeInsets.all(20),
+            child: ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateColor.resolveWith((states) =>
+                        states.contains(MaterialState.pressed)
+                            ? Colors.red
+                            : Colors.black)),
+                onPressed: () {
+                  final password = generatepass(
+                    lower: filters["lower"],
+                    upper: filters["upper"],
+                    number: filters["numbers"],
+                    special: filters["symbols"],
+                  );
+                  controller.text = password;
+                },
+                child: Container(
+                    width: double.infinity,
+                    margin: EdgeInsets.symmetric(vertical: 15),
+                    child: Center(child: Text('Generate')))),
+          )
         ],
       ),
     );
   }
 
-  String generatepass() {
-    final length = 15;
+  String generatepass(
+      {bool lower = true,
+      bool upper = true,
+      bool number = true,
+      bool special = true,
+      int length = 15}) {
+    if (!lower && !upper && !number && !special) {
+      Get.dialog(AlertDialog(
+        title: Text("Error"),
+        content: Text("Please select at least one filter"),
+        actions: [
+          ElevatedButton(
+            child: Text("Ok"),
+            onPressed: () {
+              Get.back();
+            },
+          )
+        ],
+      ));
+      return "";
+    }
+
     final letterslower = 'abcdefghijklmnopqrstuvwxyz';
     final lettersupper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     final numbers = '1234567890';
-    final special = '!#()*+,-./:;<=>?@[\]^_`{|}~%';
+    final specialChars = '!#()*+,-./:;<=>?@[\]^_`{|}~%';
 
     String chars = '';
-    chars += '$letterslower';
-    chars += '$lettersupper';
-    chars += '$numbers';
-    chars += '$special';
+    if (upper) chars += lettersupper;
+    if (lower) chars += letterslower;
+    if (number) chars += numbers;
+    if (special) chars += specialChars;
 
     return List.generate(length, (index) {
       final indexRandom = Random.secure().nextInt(chars.length);
-
       return chars[indexRandom];
     }).join('');
   }

@@ -1,9 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:signature/screens/authpage.dart';
 import 'package:signature/screens/homepage.dart';
 import 'package:signature/screens/login_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 // bool switchValue = false;
 
@@ -32,8 +30,8 @@ import 'package:flutter/cupertino.dart';
 // }
 
 final Map<String, Widget Function(BuildContext)> routes = {
-  MyRoutes.homeRoute: (context) => home(),
-  MyRoutes.loginRoute: (context) => login_screen()
+  MyRoutes.homeRoute: (context) => Home(),
+  MyRoutes.loginRoute: (context) => LoginScreen()
 };
 
 class MyRoutes {
