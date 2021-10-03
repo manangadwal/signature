@@ -47,8 +47,12 @@ class _generatorState extends State<generator> {
                       Clipboard.setData(data);
 
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text('Copied'),
-                        backgroundColor: Colors.cyan,
+                        content: Text(
+                          'Copied to clipboard',
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        backgroundColor: Colors.greenAccent[400],
                       ));
                     },
                   ),
@@ -66,7 +70,7 @@ class _generatorState extends State<generator> {
               style: ButtonStyle(
                   backgroundColor: MaterialStateColor.resolveWith((states) =>
                       states.contains(MaterialState.pressed)
-                          ? Colors.cyan
+                          ? Colors.red
                           : Colors.black)),
               onPressed: () {
                 final password = generatepass();

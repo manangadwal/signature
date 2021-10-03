@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:signature/screens/auth.dart';
 import 'package:signature/screens/homepage.dart';
-import 'package:signature/screens/routes.dart';
 
-class login_screen extends StatelessWidget {
-  const login_screen({Key? key}) : super(key: key);
+class Auth_inside extends StatelessWidget {
+  const Auth_inside({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +32,15 @@ class login_screen extends StatelessWidget {
                               (states) => states.contains(MaterialState.pressed)
                                   ? Colors.red
                                   : Colors.black)),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            PageRouteBuilder(
-                                pageBuilder: (context, a1, a2) => home()));
+                      onPressed: () async {
+                        final isAuthenticated = await Localauth.authenticate();
+
+                        if (isAuthenticated) {
+                          Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                  pageBuilder: (context, a1, a2) => home()));
+                        }
                       },
                       child: Text(
                         "Get Started",

@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: login_screen(),
-        theme: ThemeData(primaryColor: Colors.cyan),
+        theme: ThemeData(brightness: Brightness.dark, accentColor: Colors.red),
         initialRoute: MyRoutes.loginRoute,
         routes: routes);
   }

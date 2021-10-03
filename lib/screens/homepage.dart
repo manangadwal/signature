@@ -13,7 +13,7 @@ class home extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             title: Text("Welcome"),
-            backgroundColor: Colors.cyan,
+            // backgroundColor: Colors.cyan,
             centerTitle: true,
             bottom: const TabBar(
               tabs: [
