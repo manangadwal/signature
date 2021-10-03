@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         defaultTransition: Transition.fadeIn,
-        home: login_screen(),
+        home: LoginScreen(),
         theme: ThemeData.dark().copyWith(
           colorScheme: ThemeData.dark().colorScheme.copyWith(
                 secondary: Colors.red,

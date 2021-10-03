@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
 
@@ -27,17 +26,3 @@ class Localauth {
     }
   }
 }
-
-
-
-
-// onPressed: () async {
-//                   final isAuthenticated = await Localauth.authenticate();
-
-//                   if (isAuthenticated) {
-//                     Navigator.push(
-//                         context,
-//                         PageRouteBuilder(
-//                             pageBuilder: (context, a1, a2) => home()));
-//                   }
-//                 },

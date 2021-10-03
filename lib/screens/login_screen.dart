@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:signature/screens/auth.dart';
 import 'package:signature/screens/homepage.dart';
-import 'package:signature/screens/routes.dart';
 
-class login_screen extends StatelessWidget {
-  const login_screen({Key? key}) : super(key: key);
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +34,27 @@ class login_screen extends StatelessWidget {
                               (states) => states.contains(MaterialState.pressed)
                                   ? Colors.red
                                   : Colors.black)),
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            PageRouteBuilder(
-                                pageBuilder: (context, a1, a2) => home()));
-                        // Navigator.of(context).pop();
+                      onPressed: () async {
+                        var prefs = await SharedPreferences.getInstance();
+                        bool localAuth = prefs.getBool("localAuth") ?? false;
+
+                        if (localAuth) {
+                          try {
+                            final isAuthenticated =
+                                await Localauth.authenticate();
+
+                            if (isAuthenticated) {
+                              Get.off(() => Home());
+                            } else {
+                              Get.snackbar(
+                                  "Error", "Authentication Needed to continue");
+                            }
+                          } catch (e) {
+                            Get.snackbar(
+                                "Error", "Authentication Needed to continue");
+                          }
+                        } else
+                          Get.off(() => Home());
                       },
                       child: Text(
                         "Get Started",
