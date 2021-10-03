@@ -17,7 +17,7 @@ class Localauth {
     if (!isAvailable) return false;
     try {
       return await _auth.authenticate(
-          localizedReason: 'Scan to Authenticate',
+          localizedReason: 'Prove your Identity',
           biometricOnly: true,
           useErrorDialogs: true,
           stickyAuth: true);
