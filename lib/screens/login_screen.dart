@@ -37,7 +37,7 @@ class login_screen extends StatelessWidget {
                             context,
                             PageRouteBuilder(
                                 pageBuilder: (context, a1, a2) => home()));
-                        Navigator.of(context).pop();
+                        // Navigator.of(context).pop();
                       },
                       child: Text(
                         "Get Started",
