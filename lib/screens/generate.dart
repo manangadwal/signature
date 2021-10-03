@@ -52,7 +52,7 @@ class _generatorState extends State<generator> {
                           style: TextStyle(
                               color: Colors.white, fontWeight: FontWeight.bold),
                         ),
-                        backgroundColor: Colors.greenAccent[400],
+                        backgroundColor: Colors.red,
                       ));
                     },
                   ),
