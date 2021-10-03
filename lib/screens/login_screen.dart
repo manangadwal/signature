@@ -33,10 +33,11 @@ class login_screen extends StatelessWidget {
                                   ? Colors.red
                                   : Colors.black)),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                             context,
                             PageRouteBuilder(
                                 pageBuilder: (context, a1, a2) => home()));
+                        Navigator.of(context).pop();
                       },
                       child: Text(
                         "Get Started",
