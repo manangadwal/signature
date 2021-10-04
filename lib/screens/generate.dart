@@ -51,6 +51,7 @@ class _GeneratorState extends State<Generator> {
             children: [
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Checkbox(
+                    activeColor: Colors.red,
                     value: filters["upper"],
                     onChanged: (value) {
                       setState(() {
@@ -61,6 +62,7 @@ class _GeneratorState extends State<Generator> {
               ]),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Checkbox(
+                    activeColor: Colors.red,
                     value: filters["lower"],
                     onChanged: (value) {
                       setState(() {
@@ -71,6 +73,7 @@ class _GeneratorState extends State<Generator> {
               ]),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Checkbox(
+                    activeColor: Colors.red,
                     value: filters["numbers"],
                     onChanged: (value) {
                       setState(() {
@@ -81,6 +84,7 @@ class _GeneratorState extends State<Generator> {
               ]),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Checkbox(
+                    activeColor: Colors.red,
                     value: filters["symbols"],
                     onChanged: (value) {
                       setState(() {

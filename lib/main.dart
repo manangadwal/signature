@@ -14,11 +14,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         defaultTransition: Transition.fadeIn,
         home: LoginScreen(),
-        theme: ThemeData.dark().copyWith(
-          colorScheme: ThemeData.dark().colorScheme.copyWith(
-                secondary: Colors.red,
-              ),
-        ),
+        theme: ThemeData(
+            brightness: Brightness.dark,
+            primaryColor: Colors.red,
+            accentColor: Colors.red),
         initialRoute: MyRoutes.loginRoute,
         routes: routes);
   }
