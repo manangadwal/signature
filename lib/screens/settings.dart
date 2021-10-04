@@ -21,6 +21,7 @@ class _SettingsState extends State<Settings> {
             ListTile(
                 title: Text("Fingerprint Lock"),
                 trailing: Switch(
+                    activeColor: Colors.red,
                     value: widget.prefs.getBool('localAuth') ?? false,
                     onChanged: (value) {
                       widget.prefs

@@ -28,38 +28,42 @@ class LoginScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateColor.resolveWith(
-                              (states) => states.contains(MaterialState.pressed)
-                                  ? Colors.red
-                                  : Colors.black)),
-                      onPressed: () async {
-                        var prefs = await SharedPreferences.getInstance();
-                        bool localAuth = prefs.getBool("localAuth") ?? false;
+                    Container(
+                      width: 150,
+                      height: 45,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateColor.resolveWith(
+                                (states) =>
+                                    states.contains(MaterialState.pressed)
+                                        ? Colors.red
+                                        : Colors.black)),
+                        onPressed: () async {
+                          var prefs = await SharedPreferences.getInstance();
+                          bool localAuth = prefs.getBool("localAuth") ?? false;
 
-                        if (localAuth) {
-                          try {
-                            final isAuthenticated =
-                                await Localauth.authenticate();
+                          if (localAuth) {
+                            try {
+                              final isAuthenticated =
+                                  await Localauth.authenticate();
 
-                            if (isAuthenticated) {
-                              Get.off(() => Home());
-                            } else {
+                              if (isAuthenticated) {
+                                Get.off(() => Home());
+                              } else {
+                                Get.snackbar("Error",
+                                    "Authentication Needed to continue");
+                              }
+                            } catch (e) {
                               Get.snackbar(
                                   "Error", "Authentication Needed to continue");
                             }
-                          } catch (e) {
-                            Get.snackbar(
-                                "Error", "Authentication Needed to continue");
-                          }
-                        } else
-                          Get.off(() => Home());
-                      },
-                      child: Text(
-                        "Get Started",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                          } else
+                            Get.off(() => Home());
+                        },
+                        child: Text(
+                          "Get Started",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
                         ),
                       ),
                     )
