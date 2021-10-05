@@ -23,6 +23,11 @@ class textForm extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           buildName(),
+          buildDesc(),
+          SizedBox(
+            height: 10,
+          ),
+          IconButton(onPressed: onSavedForm, icon: Icon(Icons.check))
         ],
       ),
     );
@@ -30,8 +35,23 @@ class textForm extends StatelessWidget {
 
   Widget buildName() {
     return TextFormField(
-      decoration:
-          InputDecoration(border: UnderlineInputBorder(), label: Text("Name")),
+      onChanged: onChangedName,
+      decoration: InputDecoration(
+          // focusColor: Colors.red,
+          // fillColor: Colors.red,
+          border: UnderlineInputBorder(),
+          label: Text("Password")),
+    );
+  }
+
+  Widget buildDesc() {
+    return TextFormField(
+      onChanged: onChangedDesc,
+      decoration: InputDecoration(
+          // focusColor: Colors.red,
+          // fillColor: Colors.red,
+          border: UnderlineInputBorder(),
+          label: Text("Description")),
     );
   }
 }
