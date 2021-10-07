@@ -12,10 +12,10 @@ class Saved extends StatelessWidget {
           showDialog(
               context: context,
               builder: (BuildContext context) => AlertDialog(
-                    title: Text('Save Password'),
+                    title: Center(child: Text('Save Password')),
                     actions: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 8, right: 8),
+                        padding: const EdgeInsets.only(left: 15, right: 15),
                         child: TextFormField(
                           decoration: InputDecoration(label: Text("Title")),
                         ),
@@ -24,19 +24,22 @@ class Saved extends StatelessWidget {
                         height: 5,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 8, right: 8),
+                        padding: const EdgeInsets.only(left: 15, right: 15),
                         child: TextFormField(
                           decoration: InputDecoration(label: Text("Password")),
                         ),
                       ),
                       SizedBox(
-                        height: 15,
+                        height: 20,
                       ),
                       Center(
                           child: IconButton(
                               splashColor: Colors.red,
                               onPressed: () {},
-                              icon: Icon(Icons.check)))
+                              icon: Icon(Icons.check))),
+                      SizedBox(
+                        height: 10,
+                      ),
                     ],
                   ));
         },
