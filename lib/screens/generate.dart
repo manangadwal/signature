@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:signature/meta/Utility/constants.dart';
 
 class Generator extends StatefulWidget {
   const Generator({Key? key}) : super(key: key);
@@ -30,125 +31,123 @@ class _GeneratorState extends State<Generator> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            "Random Password Generator ",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-          Spacer(),
-          GridView(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, childAspectRatio: 2),
-            children: [
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Checkbox(
-                    activeColor: Colors.red,
-                    value: filters["upper"],
-                    onChanged: (value) {
-                      setState(() {
-                        filters["upper"] = value;
-                      });
-                    }),
-                Text("Upper Case"),
-              ]),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Checkbox(
-                    activeColor: Colors.red,
-                    value: filters["lower"],
-                    onChanged: (value) {
-                      setState(() {
-                        filters["lower"] = value;
-                      });
-                    }),
-                Text("Lower Case"),
-              ]),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Checkbox(
-                    activeColor: Colors.red,
-                    value: filters["numbers"],
-                    onChanged: (value) {
-                      setState(() {
-                        filters["numbers"] = value;
-                      });
-                    }),
-                Text("Numbers"),
-              ]),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Checkbox(
-                    activeColor: Colors.red,
-                    value: filters["symbols"],
-                    onChanged: (value) {
-                      setState(() {
-                        filters["symbols"] = value;
-                      });
-                    }),
-                Text("Symbols"),
-              ]),
-            ],
-          ),
-          Spacer(),
-          Padding(
-            padding:
-                const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-            child: TextField(
-              decoration: InputDecoration(
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.copy),
-                    onPressed: () {
-                      final data = ClipboardData(text: controller.text);
-                      Clipboard.setData(data);
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SizedBox(
+          height: 20,
+        ),
+        Text(
+          "Random Password Generator ",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        ),
+        Spacer(),
+        GridView(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, childAspectRatio: 2),
+          children: [
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Checkbox(
+                  activeColor: primaryColor,
+                  value: filters["upper"],
+                  onChanged: (value) {
+                    setState(() {
+                      filters["upper"] = value;
+                    });
+                  }),
+              const Text("Upper Case"),
+            ]),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Checkbox(
+                  activeColor: primaryColor,
+                  value: filters["lower"],
+                  onChanged: (value) {
+                    setState(() {
+                      filters["lower"] = value;
+                    });
+                  }),
+              Text("Lower Case"),
+            ]),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Checkbox(
+                  activeColor: primaryColor,
+                  value: filters["numbers"],
+                  onChanged: (value) {
+                    setState(() {
+                      filters["numbers"] = value;
+                    });
+                  }),
+              Text("Numbers"),
+            ]),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Checkbox(
+                  activeColor: primaryColor,
+                  value: filters["symbols"],
+                  onChanged: (value) {
+                    setState(() {
+                      filters["symbols"] = value;
+                    });
+                  }),
+              Text("Symbols"),
+            ]),
+          ],
+        ),
+        Spacer(),
+        Padding(
+          padding:
+              const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+          child: TextField(
+            decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.copy),
+                  onPressed: () {
+                    final data = ClipboardData(text: controller.text);
+                    Clipboard.setData(data);
 
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text(
-                          'Copied to clipboard',
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
-                        backgroundColor: Colors.red,
-                      ));
-                    },
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(5)))),
-              readOnly: true,
-              enableInteractiveSelection: false,
-              controller: controller,
-            ),
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                        'Copied to clipboard',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                      backgroundColor: primaryColor,
+                    ));
+                  },
+                ),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(5)))),
+            readOnly: true,
+            enableInteractiveSelection: false,
+            controller: controller,
           ),
-          Spacer(),
-          Container(
-            margin: EdgeInsets.all(20),
-            child: ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateColor.resolveWith((states) =>
-                        states.contains(MaterialState.pressed)
-                            ? Colors.red
-                            : Colors.black)),
-                onPressed: () {
-                  final password = generatepass(
-                    lower: filters["lower"],
-                    upper: filters["upper"],
-                    number: filters["numbers"],
-                    special: filters["symbols"],
-                  );
-                  controller.text = password;
-                },
-                child: Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.symmetric(vertical: 15),
-                    child: Center(child: Text('Generate')))),
-          )
-        ],
-      ),
+        ),
+        Spacer(),
+        Container(
+          margin: EdgeInsets.all(20),
+          child: ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateColor.resolveWith((states) =>
+                      states.contains(MaterialState.pressed)
+                          ? primaryColor
+                          : Colors.black)),
+              onPressed: () {
+                final password = generatepass(
+                  lower: filters["lower"],
+                  upper: filters["upper"],
+                  number: filters["numbers"],
+                  special: filters["symbols"],
+                );
+                controller.text = password;
+              },
+              child: Container(
+                  width: double.infinity,
+                  margin: EdgeInsets.symmetric(vertical: 15),
+                  child: Center(child: Text('Generate')))),
+        )
+      ],
     );
   }
 
