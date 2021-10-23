@@ -131,8 +131,8 @@ class _GeneratorState extends State<Generator> {
               style: ButtonStyle(
                   backgroundColor: MaterialStateColor.resolveWith((states) =>
                       states.contains(MaterialState.pressed)
-                          ? primaryColor
-                          : Colors.black)),
+                          ? Colors.black
+                          : primaryColor.withOpacity(0.8))),
               onPressed: () {
                 final password = generatepass(
                   lower: filters["lower"],
@@ -150,43 +150,43 @@ class _GeneratorState extends State<Generator> {
       ],
     );
   }
+}
 
-  String generatepass(
-      {bool lower = true,
-      bool upper = true,
-      bool number = true,
-      bool special = true,
-      int length = 15}) {
-    if (!lower && !upper && !number && !special) {
-      Get.dialog(AlertDialog(
-        title: Text("Error"),
-        content: Text("Please select at least one filter"),
-        actions: [
-          ElevatedButton(
-            child: Text("Ok"),
-            onPressed: () {
-              Get.back();
-            },
-          )
-        ],
-      ));
-      return "";
-    }
-
-    final letterslower = 'abcdefghijklmnopqrstuvwxyz';
-    final lettersupper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    final numbers = '1234567890';
-    final specialChars = '!#()*+,-./:;<=>?@[\]^_`{|}~%';
-
-    String chars = '';
-    if (upper) chars += lettersupper;
-    if (lower) chars += letterslower;
-    if (number) chars += numbers;
-    if (special) chars += specialChars;
-
-    return List.generate(length, (index) {
-      final indexRandom = Random.secure().nextInt(chars.length);
-      return chars[indexRandom];
-    }).join('');
+String generatepass(
+    {bool lower = true,
+    bool upper = true,
+    bool number = true,
+    bool special = true,
+    int length = 15}) {
+  if (!lower && !upper && !number && !special) {
+    Get.dialog(AlertDialog(
+      title: Text("Error"),
+      content: Text("Please select at least one filter"),
+      actions: [
+        ElevatedButton(
+          child: Text("Ok"),
+          onPressed: () {
+            Get.back();
+          },
+        )
+      ],
+    ));
+    return "";
   }
+
+  final letterslower = 'abcdefghijklmnopqrstuvwxyz';
+  final lettersupper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  final numbers = '1234567890';
+  final specialChars = '!#()*+,-./:;<=>?@[\]^_`{|}~%';
+
+  String chars = '';
+  if (upper) chars += lettersupper;
+  if (lower) chars += letterslower;
+  if (number) chars += numbers;
+  if (special) chars += specialChars;
+
+  return List.generate(length, (index) {
+    final indexRandom = Random.secure().nextInt(chars.length);
+    return chars[indexRandom];
+  }).join('');
 }

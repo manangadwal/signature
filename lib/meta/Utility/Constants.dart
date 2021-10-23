@@ -43,18 +43,22 @@ List<dynamic> mapByKey(String keyName, List<dynamic> input) {
   return returnValue.values.toList();
 }
 
-textfieldDecoration(label) {
+textfieldDecoration(hint, {Widget? icon}) {
   return InputDecoration(
-      isDense: true,
-      contentPadding: EdgeInsets.all(15),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(4)),
-        borderSide: BorderSide(width: 1, color: primaryColor),
-      ),
-      border: new OutlineInputBorder(
-          borderSide: new BorderSide(color: Colors.grey)),
-      labelText: label,
-      labelStyle: TextStyle(color: Colors.grey));
+    border: InputBorder.none,
+    hintText: hint,
+    suffixIcon: icon ?? null,
+    filled: true,
+    fillColor: Colors.grey.withOpacity(0.4),
+    focusedBorder: UnderlineInputBorder(
+      borderSide: const BorderSide(color: primaryColor),
+      borderRadius: BorderRadius.circular(10.0),
+    ),
+    enabledBorder: UnderlineInputBorder(
+      borderSide: const BorderSide(color: Colors.grey),
+      borderRadius: BorderRadius.circular(10.0),
+    ),
+  );
 }
 
 comingSoon(context) {
