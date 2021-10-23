@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:signature/auth/login_screen.dart';
 import 'package:signature/screens/homepage.dart';
-import 'package:signature/screens/login_screen.dart';
 
 // bool switchValue = false;
 

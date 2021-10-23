@@ -36,21 +36,17 @@ class _HomeState extends State<Home> {
             automaticallyImplyLeading: false,
             actions: [
               IconButton(
-                  onPressed: () => Get.to(() => Settings(
-                        prefs: prefs,
-                      )),
+                  onPressed: () => Get.to(() => Settings()),
                   icon: Icon(Icons.settings)),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Icon(Icons.logout),
               )
             ],
-            title: Text(
+            title: const Text(
               "Welcome",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            // backgroundColor: Colors.cyan,
-            // centerTitle: true,
             bottom: const TabBar(
               tabs: [
                 Tab(

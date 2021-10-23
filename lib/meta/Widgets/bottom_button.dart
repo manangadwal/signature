@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../Utility/Constants.dart';
+import '../Utility/constants.dart';
 
 class BottomButton extends StatefulWidget {
   final String? text;
