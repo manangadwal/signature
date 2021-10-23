@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:signature/meta/Utility/Constants.dart';
-import 'package:signature/screens/homepage.dart';
+import 'package:signature/screens/bottom_navbar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -145,6 +145,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
       await firebaseFirestore.collection("accounts").doc(user.uid).set(data);
     }
-    Get.offAll(() => const Home());
+    Get.offAll(() => const BottomNavBar());
   }
 }

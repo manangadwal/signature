@@ -49,9 +49,12 @@ class MyApp extends StatelessWidget {
             : const LoginScreen(),
         theme: ThemeData(
             scaffoldBackgroundColor: bgColor,
-            brightness: Brightness.dark,
             primaryColor: primaryColor,
-            accentColor: primaryColor),
+            colorScheme: ColorScheme.fromSwatch(
+              brightness: Brightness.dark,
+            ).copyWith(
+              secondary: primaryColor,
+            )),
         routes: routes);
   }
 }

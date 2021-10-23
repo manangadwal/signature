@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:signature/meta/Utility/constants.dart';
 import 'package:signature/screens/generate.dart';
 import 'package:signature/screens/saved.dart';
-import 'package:signature/screens/settings.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -34,20 +34,26 @@ class _HomeState extends State<Home> {
         child: Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            actions: [
-              IconButton(
-                  onPressed: () => Get.to(() => Settings()),
-                  icon: Icon(Icons.settings)),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Icon(Icons.logout),
-              )
-            ],
-            title: const Text(
-              "Welcome",
-              style: TextStyle(fontWeight: FontWeight.bold),
+            backgroundColor: bgColor,
+            centerTitle: true,
+            title: Text.rich(
+              TextSpan(
+                style: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.bold, fontSize: 20),
+                children: [
+                  const TextSpan(
+                    text: 'GET',
+                  ),
+                  TextSpan(
+                    text: 'PASS',
+                    style: GoogleFonts.montserrat(
+                        fontWeight: FontWeight.bold, color: primaryColor),
+                  ),
+                ],
+              ),
             ),
             bottom: const TabBar(
+              indicatorColor: primaryColor,
               tabs: [
                 Tab(
                   child: Text("Generator"),
