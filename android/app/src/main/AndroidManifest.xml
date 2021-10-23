@@ -2,7 +2,7 @@
     package="com.example.signature">
     <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
    <application
-        android:label="signature"
+        android:label="LastPass"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
