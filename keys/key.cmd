@@ -1,0 +1,1 @@
+keytool -list -v -keystore "keys\keystore.jks" -alias getpass -storepass getpass -keypass getpass

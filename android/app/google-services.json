@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "1053605552026-nr3vdr1efb7646tm28pahf3tuirlt00q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.web.getpass",
+            "certificate_hash": "1c93b496fd67641f99509b43a7542a313fb497e5"
+          }
+        },
+        {
           "client_id": "1053605552026-gpjmoj6oeu1or9napor2gf4dg5pntl69.apps.googleusercontent.com",
           "client_type": 3
         }
