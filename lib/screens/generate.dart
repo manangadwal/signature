@@ -35,18 +35,16 @@ class _GeneratorState extends State<Generator> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
-          height: 20,
-        ),
-        Text(
+        box20,
+        const Text(
           "Random Password Generator ",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
-        Spacer(),
+        const Spacer(),
         GridView(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, childAspectRatio: 2),
           children: [
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -107,7 +105,7 @@ class _GeneratorState extends State<Generator> {
                     final data = ClipboardData(text: controller.text);
                     Clipboard.setData(data);
 
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                       content: Text(
                         'Copied to clipboard',
                         style: TextStyle(
@@ -117,16 +115,16 @@ class _GeneratorState extends State<Generator> {
                     ));
                   },
                 ),
-                border: OutlineInputBorder(
+                border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(5)))),
             readOnly: true,
             enableInteractiveSelection: false,
             controller: controller,
           ),
         ),
-        Spacer(),
+        const Spacer(),
         Container(
-          margin: EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
           child: ElevatedButton(
               style: ButtonStyle(
                   backgroundColor: MaterialStateColor.resolveWith((states) =>
