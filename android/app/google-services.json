@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1053605552026",
+    "project_id": "getpassanywhere",
+    "storage_bucket": "getpassanywhere.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053605552026:android:4e13af656526f4d3886423",
+        "android_client_info": {
+          "package_name": "com.example.signature"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1053605552026-pa3vr27e42gqntanpprfa829onjk21q3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.signature",
+            "certificate_hash": "28a51388e4943781b173d9a2db1649bb3759d213"
+          }
+        },
+        {
+          "client_id": "1053605552026-gpjmoj6oeu1or9napor2gf4dg5pntl69.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCLaMMUC4nBEEsWXUmEczmYADB1r742Do"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1053605552026-gpjmoj6oeu1or9napor2gf4dg5pntl69.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
