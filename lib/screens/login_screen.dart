@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:signature/screens/auth.dart';
+import 'package:signature/auth/auth.dart';
 import 'package:signature/screens/homepage.dart';
 
 class LoginScreen extends StatefulWidget {
