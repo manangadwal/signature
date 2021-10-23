@@ -7,18 +7,26 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1053605552026:android:4e13af656526f4d3886423",
+        "mobilesdk_app_id": "1:1053605552026:android:21428e74c1a120f3886423",
         "android_client_info": {
-          "package_name": "com.example.signature"
+          "package_name": "app.web.getpass"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1053605552026-pa3vr27e42gqntanpprfa829onjk21q3.apps.googleusercontent.com",
+          "client_id": "1053605552026-dcql7r581p8cne893qub23v4lgmmiovm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.signature",
+            "package_name": "app.web.getpass",
             "certificate_hash": "28a51388e4943781b173d9a2db1649bb3759d213"
+          }
+        },
+        {
+          "client_id": "1053605552026-nr3vdr1efb7646tm28pahf3tuirlt00q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.web.getpass",
+            "certificate_hash": "1c93b496fd67641f99509b43a7542a313fb497e5"
           }
         },
         {
