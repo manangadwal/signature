@@ -81,7 +81,13 @@ class _SavedState extends State<Saved> {
                                 });
                           },
                           leading: CircleAvatar(
-                              backgroundImage: NetworkImage(passData["icon"])),
+                              child: passData["icon"].toString().isEmpty
+                                  ? const Icon(Icons.vpn_key)
+                                  : null,
+                              backgroundImage:
+                                  passData["icon"].toString().isEmpty
+                                      ? null
+                                      : NetworkImage(passData["icon"])),
                           trailing: IconButton(
                             onPressed: () async {
                               Clipboard.setData(
@@ -89,7 +95,7 @@ class _SavedState extends State<Saved> {
                                   .then((value) {
                                 Get.showSnackbar(
                                   GetBar(
-                                    icon: Icon(Icons.done),
+                                    icon: const Icon(Icons.done),
                                     message: "Password copied successfully",
                                     duration: const Duration(seconds: 2),
                                     isDismissible: true,
@@ -274,7 +280,7 @@ class _SavedState extends State<Saved> {
       "url": url,
       "username": username,
       "password": pass,
-      "icon": icon,
+      "icon": icon ?? "",
       "timeStamp": FieldValue.serverTimestamp()
     };
 
