@@ -19,7 +19,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int index = 0;
   @override
   Widget build(BuildContext context) {
-    List<Widget> tabs = [const Home(), Container(), Container(), Settings()];
+    List<Widget> tabs = [
+      const Home(),
+      Container(child: Center(child: Text("Coming Soon"))),
+      Container(child: Center(child: Text("Coming Soon"))),
+      const Settings()
+    ];
     return Scaffold(
       body: tabs[index],
       bottomNavigationBar: Container(
