@@ -5,7 +5,8 @@ import 'package:signature/screens/settings.dart';
 import 'homepage.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
+  final int? index;
+  const BottomNavBar({Key? key, this.index = 0}) : super(key: key);
   @override
   _BottomNavBarState createState() => _BottomNavBarState();
 }
