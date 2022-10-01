@@ -9,7 +9,6 @@ import 'package:signature/auth/login_screen.dart';
 import 'package:signature/meta/Utility/Constants.dart';
 import 'package:signature/screens/bottom_navbar.dart';
 import 'package:signature/screens/routes.dart';
-
 import 'auth/auth.dart';
 
 final FirebaseAuth auth = FirebaseAuth.instance;
